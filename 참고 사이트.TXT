@@ -1,0 +1,21 @@
+평범한 파이썬 소켓 프로그래밍 파일 전송/수신 (정상 작동 확인함)
+https://foxtrotin.tistory.com/278
+"왜 여기 있는건 되는데 내껀 안되지? 어떤 차이에서 기인하는 것이지?"
+
+파이썬 socket 문서
+https://docs.python.org/ko/3/howto/sockets.html
+
+비슷한 내용의 소켓 통신 구현한 사이트들
+https://itsaessak.tistory.com/125
+https://sdr1982.tistory.com/268
+https://minwook-shin.github.io/python-udp-tcp-socket/
+
+checksum 계산
+https://limjunho.github.io/2021/06/05/UDP-cksum.html
+
+rdt 3.0 구현한 깃 (3.0 작성 시 참고 예정)
+https://github.com/salmanshaikh733/RDT-Python-Implementation
+https://github.com/xhacker/RDT-over-UDP
+
+QnA
+https://docs.google.com/spreadsheets/d/1307vkk5NapZO6dNabW861ucJaXUHLSgpaH4JT3ENPK0/edit#gid=1178358177
