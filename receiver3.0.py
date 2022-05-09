@@ -1,5 +1,6 @@
 import os
 from socket import *
+import struct
 import sys
 from logHandler import logHandler
 
@@ -48,21 +49,25 @@ if __name__=='__main__':
             srcport = int.from_bytes(data[2:4], "big")
 
             if chksum(data):
-                file.write(data[4:]) # 헤더 짜르기.
-                log_handler.writeAck(seq, 'Sent Ack')
-                receiverSocket.sendto(bytes(seq), ("127.0.0.1", srcport))
-                seq = 1 - seq # sender가 보내는 패킷에만 corruption과 drop이 발생한다고 가정합니다.
+                if (data[4:6] != struct.pack("!H", seq)):
+                    log_handler.writeAck(seq, "Wrong Sequence Number")
+                    log_handler.writeAck(1-seq, 'Sent Ack')
+                    receiverSocket.sendto(bytes(1-seq), ("127.0.0.1", srcport))
+                else:
+                    file.write(data[6:]) # 헤더 짜르기.
+                    log_handler.writeAck(seq, 'Sent Ack')
+                    receiverSocket.sendto(bytes(seq), ("127.0.0.1", srcport))
+                    seq = 1 - seq # sender가 보내는 패킷에만 corruption과 drop이 발생한다고 가정합니다.
             else:
                 log_handler.writeAck(seq, 'DATA Corrupted')
                 log_handler.writeAck(1-seq, 'Sent Ack')
                 receiverSocket.sendto(bytes(1-seq), ("127.0.0.1", srcport))
 
-            
             data = receiverSocket.recv(1024)
         
         #EOF
         log_handler.writeAck(seq, 'Sent Ack')
-        receiverSocket.sendto(bytes(seq), ("127.0.0.1", srcport)) #EOF
+        receiverSocket.sendto(bytes(seq), ("127.0.0.1", srcport))
     print("File transfer is finished.")
 
     receiverSocket.close()

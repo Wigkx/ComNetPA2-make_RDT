@@ -21,7 +21,7 @@ if __name__=='__main__':
     log_handler.startLogging(log_filename)
 
     sender.soc.connect((dst_addr, 10090))
-    print("Maybe connect")
+    print("Connect")
 
     with open(src_filename, 'rb') as file:
         
@@ -33,6 +33,7 @@ if __name__=='__main__':
                 data = file.read(1024)
         except Exception as e:
             print(e)
+        sender.sendto(bytes(0), (dst_addr, 10090))
     print("File transfer is finished.")
     log_handler.writeEnd()
     sender.soc.close()

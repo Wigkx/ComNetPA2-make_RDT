@@ -1,7 +1,3 @@
-평범한 파이썬 소켓 프로그래밍 파일 전송/수신 (정상 작동 확인함)
-https://foxtrotin.tistory.com/278
-"왜 여기 있는건 되는데 내껀 안되지? 어떤 차이에서 기인하는 것이지?"
-
 파이썬 socket 문서
 https://docs.python.org/ko/3/howto/sockets.html
 

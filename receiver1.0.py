@@ -13,13 +13,9 @@ if __name__=='__main__':
         sys.exit(1)
 
     receiverSocket = socket(AF_INET, SOCK_DGRAM)
-    # receiverSocket.setsockopt(SOL_SOCKET,SO_REUSEADDR,1)
     receiverSocket.bind(("", 10090))
-    # receiverSocket.listen(1)
-    print("listen")
+    print("Ready")
 
-    # connectionSocket, addr = receiverSocket.accept() # accept 안쓰는 코드도 몇개 있던데 일단 이렇게 안하면 왜인지 밑에 recv에서 에러를 뱉는다. (transport endpoint not connected)
-    # print("accepted") # 그런데 이게 출력되지 않음. (accept에서 안넘어감. sender의 연결을 못받은 듯함)
 
     nowdir = os.getcwd()
     with open(nowdir+"/"+res_filename, 'wb') as file:
