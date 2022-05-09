@@ -46,8 +46,6 @@ if __name__=='__main__':
     log_handler.startLogging(log_filename)
 
 
-
-
     sender.soc.connect(("127.0.0.1", destport))
     print("Connect")
 

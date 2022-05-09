@@ -30,7 +30,7 @@ if __name__=='__main__':
         log_filename = sys.argv[2]
     except IndexError:
         print("Usage:")
-        print("python sender.py <result file name> <log file name>")
+        print("python receiver.py <result file name> <log file name>")
         sys.exit(1)
 
     receiverSocket = socket(AF_INET, SOCK_DGRAM)
